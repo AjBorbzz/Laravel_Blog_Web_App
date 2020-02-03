@@ -16,7 +16,7 @@ class PostsController extends Controller
     {
         // limit  $posts =  Post::orderBy('title', 'desc')->take(1)->get();
         // pagination $posts =  Post::orderBy('title', 'desc')->paginate(1);
-        $posts =  Post::orderBy('title', 'desc')->paginate(20);
+        $posts =  Post::orderBy('created_at', 'desc')->paginate(20);
         return view('posts.index')->with('posts', $posts);
     }
 
@@ -43,7 +43,13 @@ class PostsController extends Controller
             'body' => 'required'
         ]);
 
-        return 123;
+        //create post
+        $post = New Post;
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        $post->save();
+
+        return redirect('/posts')->with('success', 'Post Created');
     }
 
     /**
