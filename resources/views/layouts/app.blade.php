@@ -5,14 +5,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <link rel="stylesheet" href="{{asset('css/blog.css')}}">
 
         <title>{{config('app.name','AJBorbz')}}</title>
 
     </head>
     <body>
-        @include('inc.navbar')
         <div class="container">
-            @yield('content')
+        @include('inc.navbar')
+        <main role="main">
+                @yield('content')
+        </main>
         </div>
     </body>
 </html>
